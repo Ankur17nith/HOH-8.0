@@ -11,6 +11,13 @@
             "logo": "/sponsors/images/devfolio_new.png",
             "image": "/sponsors/images/devfolio_new.png",
             "link": "https://devfolio.co"
+          },
+          {
+            "name": "ElevenLabs",
+            "logo": "/sponsors/elevenlabs-symbol.png",
+            "image": "/sponsors/images/elevenlabs-logo-white.png",
+            "link": "https://elevenlabs.io",
+            "rewards": "For all participants: 1 month free of our Creator tier (normally $22/month, 131k credits) \n\n Overall winning team: Each team member receives 3 months of our Pro tier ($297 value/team member, 600k credits/mo)\n\n Best Project Built with ElevenLabs: Each team member receives 3 months of our Scale tier ($897 value/team member, 1.8M credits/mo)"
           }
         ]
       },
