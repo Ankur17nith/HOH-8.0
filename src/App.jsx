@@ -10,6 +10,7 @@ import About from "./components/About";
 import Protocols from "./components/Protocols";
 import AgenticDomains from "./components/AgenticDomains";
 import Sponsors from "./components/Sponsors";
+import SponsorRewards from "./components/SponsorRewards";
 import FAQ from "./components/FAQ";
 import Register from "./components/Register";
 
@@ -84,6 +85,9 @@ function App() {
         <div className="divider"></div>
         
         <PrizePool />
+        <div className="divider"></div>
+        
+        <SponsorRewards />
         <div className="divider"></div>
         
         <Sponsors />

@@ -2,6 +2,34 @@ import React, { useMemo, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
 
+let isWebGLTextSupported = true;
+try {
+  const canvas = document.createElement("canvas");
+  const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+  if (!gl || !gl.getExtension("ANGLE_instanced_arrays")) {
+    isWebGLTextSupported = false;
+  }
+} catch (e) {
+  isWebGLTextSupported = false;
+}
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+  componentDidCatch(error, errorInfo) {
+    console.warn("AgentUniverse Canvas Error:", error);
+  }
+  render() {
+    if (this.state.hasError) return null;
+    return this.props.children;
+  }
+}
+
 export default function AgentUniverse({
   eventSource,
   density = 500,
@@ -13,19 +41,21 @@ export default function AgentUniverse({
 }) {
   return (
     <div style={{ position: "fixed", inset: 0, zIndex: -1, background: "#050505" }}>
-      <Canvas eventSource={eventSource} eventPrefix="client" camera={{ position: [0, 0, 30], fov: 65 }}>
-        <fog attach="fog" args={["#050505", 30, 120]} />
-        <ambientLight intensity={0.4} />
-        <pointLight position={[20, 20, 20]} intensity={2} color={color} />
-        <BackgroundScene
-          density={density}
-          textDensity={textDensity}
-          speed={speed}
-          mouseStrength={mouseStrength}
-          color={color}
-          words={words}
-        />
-      </Canvas>
+      <ErrorBoundary>
+        <Canvas eventSource={eventSource} eventPrefix="client" camera={{ position: [0, 0, 30], fov: 65 }}>
+          <fog attach="fog" args={["#050505", 30, 120]} />
+          <ambientLight intensity={0.4} />
+          <pointLight position={[20, 20, 20]} intensity={2} color={color} />
+          <BackgroundScene
+            density={density}
+            textDensity={textDensity}
+            speed={speed}
+            mouseStrength={mouseStrength}
+            color={color}
+            words={words}
+          />
+        </Canvas>
+      </ErrorBoundary>
     </div>
   );
 }
@@ -90,7 +120,7 @@ function BackgroundScene({ density, textDensity, speed, mouseStrength, color, wo
         ))}
       </group>
 
-      {texts.map((item, i) => (
+      {isWebGLTextSupported && texts.map((item, i) => (
         <InteractiveText key={i} item={item} speed={speed} mouseStrength={mouseStrength} />
       ))}
     </>
