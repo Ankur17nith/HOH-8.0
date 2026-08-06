@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hoh-8-0.vercel.app/sitemap.xml
+Sitemap: https://hackonhills8.in/sitemap.xml

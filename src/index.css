@@ -4,7 +4,7 @@
 /* Space Grotesk local fallback just in case */
 @font-face {
   font-family: 'SpaceGroteskLocal';
-  src: url('./assets/fonts/SpaceGrotesk-Regular.woff2') format('woff2');
+  src: url('./assets/fonts/SpaceGrotesk-Regular.ttf') format('truetype');
   font-weight: 400;
   font-display: swap;
 }
@@ -15,6 +15,7 @@
   src: url('./assets/fonts/acorn-nostalgia-mono.otf.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 .font-nostalgia {
