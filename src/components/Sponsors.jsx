@@ -64,7 +64,7 @@ function Sponsors() {
                       style={{ width: 260, minHeight: 120, cursor: s.link ? "pointer" : "default" }}
                       >
                       <div className="flex justify-center items-center w-full h-16 md:h-20 relative z-10">
-                        <img src={s.image || s.logo} alt={s.alt || s.name} className={`object-contain filter transition-all duration-300 max-h-16 md:max-h-20 max-w-[200px] ${!isCommunity ? "brightness-100 group-hover:brightness-125" : ""}`} />
+                        <img src={s.image || s.logo} alt={s.alt || s.name} loading="lazy" decoding="async" width="200" height="80" className={`object-contain filter transition-all duration-300 max-h-16 md:max-h-20 max-w-50 ${!isCommunity ? "brightness-100 group-hover:brightness-125" : ""}`} />
                       </div>
                     </El>
                   );

@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense, lazy } from "react";
 import { StickyNavbar } from "./components/Navbar";
 import Footer from "./components/Footer";
 import Timeline from "./components/Timeline";
 import PrizePool from "./components/PrizePool";
-import AgentUniverse from "./components/AgentUniverse";
+// import AgentUniverse from "./components/AgentUniverse";
 import Loader from "./components/Loader";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -13,6 +13,8 @@ import Sponsors from "./components/Sponsors";
 import SponsorRewards from "./components/SponsorRewards";
 import FAQ from "./components/FAQ";
 import Register from "./components/Register";
+
+const AgentUniverse = lazy(() => import("./components/AgentUniverse"));
 
 const AU_WORDS = [
   "AUTONOMOUS", "AGENTS", "REASONING", "MULTI-AGENT",
@@ -56,7 +58,9 @@ function App() {
       <Loader />
 
       {/* 3-D Background */}
-      <AgentUniverse eventSource={containerRef} density={150} textDensity={200} speed={0.5} mouseStrength={0.5} color="#a0c0c0" words={AU_WORDS} />
+      <Suspense fallback={null}>
+        <AgentUniverse eventSource={containerRef} density={150} textDensity={200} speed={0.5} mouseStrength={0.5} color="#a0c0c0" words={AU_WORDS} />
+      </Suspense>
 
       {/* Navbar */}
       <div className="relative z-50"><StickyNavbar /></div>

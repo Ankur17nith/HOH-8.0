@@ -37,7 +37,7 @@ function SponsorRewards() {
           {rewardSponsors.map((s, i) => (
             <div key={i} className="bg-white/5 border border-white/10 hover:border-white/20 p-8 rounded-2xl flex flex-col transition-all duration-300 hover:-translate-y-2 relative overflow-hidden backdrop-blur-md">
               <div className="flex justify-center items-center h-24 mb-8 p-4 bg-transparent">
-                <img src={s.logo} alt={s.name} className="rounded-full max-h-full max-w-full object-contain filter brightness-100 hover:brightness-125 transition-all duration-300" />
+                <img src={s.logo} alt={s.name} loading="lazy" decoding="async" width="96" height="96" className="rounded-full max-h-full max-w-full object-contain filter brightness-100 hover:brightness-125 transition-all duration-300" />
               </div>
               <h3 className="text-xl font-bold text-white mb-4 text-center">{s.name}</h3>
               <div className="text-sm text-zinc-300 leading-relaxed whitespace-pre-line">
